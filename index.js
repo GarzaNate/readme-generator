@@ -1,7 +1,6 @@
-
-
-const inquirer = require("inquirer")
+const inquirer = require("inquirer");
 const fs = require('fs');
+const generateMarkdown = require('./generateMarkdown.js'); 
 
 console.log('----------README GENERATOR----------')
 inquirer.prompt([
@@ -31,14 +30,8 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: 'What is your github username?',
-        name: 'username',
-        validate: (value) => {if(value){return true}else {return 'Please enter a valid response.'}},
-    },
-    {
-        type: 'input',
-        message: 'What is your email address?',
-        name: 'email',
+        message: 'Who were the contributors to this project if any?',
+        name: 'credit',
         validate: (value) => {if(value){return true}else {return 'Please enter a valid response.'}},
     },
     {
@@ -53,6 +46,22 @@ inquirer.prompt([
         name: 'license',
         choices: ['Apache 2.0 License', 'Boost Software License 1.0', 'BSD 3-Clause License', 'BSD 2-Clause License'],validate: (value) => {if(value){return true}else {return 'Please enter a valid response.'}},
     },
+    {
+        type: 'input',
+        message: 'What is your github username?',
+        name: 'username',
+        validate: (value) => {if(value){return true}else {return 'Please enter a valid response.'}},
+    },
+    {
+        type: 'input',
+        message: 'What is your email address?',
+        name: 'email',
+        validate: (value) => {if(value){return true}else {return 'Please enter a valid response.'}},
+    },
 ]).then(data => {
     console.table(data)
+    function writeToFile(fileName, data) {
+
+    }
+
 })

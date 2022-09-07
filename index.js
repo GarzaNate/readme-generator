@@ -38,13 +38,14 @@ const questions = [{
     type: 'input',
     message: 'What are the steps to run tests?',
     name: 'test',
-   // validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
+    // validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
 },
 {
     type: 'list',
     message: 'Please enter license for the project.',
     name: 'license',
-    choices: ['Apache_2.0', 'Boost_Software_License_1.0', 'BSD_3-Clause_License', 'BSD_2-Clause_License'], validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
+    choices: ['Apache_2.0', 'Boost_Software_License_1.0', 'BSD_3-Clause_License', 'BSD_2-Clause_License'],
+    validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
 },
 {
     type: 'input',
@@ -69,7 +70,7 @@ function writeToFile(fileName, data) {
 // Function to generate README
 function init() {
     console.log('----------README GENERATOR----------')
-    
+
     inquirer.prompt(questions).then(data => {
         console.table(data)
         writeToFile("README.md", generateMarkdown(data));

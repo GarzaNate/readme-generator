@@ -3,30 +3,37 @@ const inquirer = require("inquirer");
 const fs = require('fs');
 const generateMarkdown = require('./generateMarkdown.js');
 
+function validateInfo(value) {
+    if (value) {
+        return true;
+    } else {
+        return 'Please enter a valid response.';
+    }
+}
 // Array of questions
 const questions = [{
     type: 'input',
     message: "What is your project title?",
     name: 'title',
-    validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } }
+    validate: validateInfo,
 },
 {
     type: 'input',
     message: 'Please enter your description.',
     name: 'description',
-    validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
+    validate: validateInfo,
 },
 {
     type: 'input',
     message: 'What are the installation steps?',
     name: 'installation',
-    validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
+    validate: validateInfo,
 },
 {
     type: 'input',
     message: 'How is your application used?',
     name: 'usage',
-    validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
+    validate: validateInfo,
 },
 {
     type: 'input',
@@ -45,7 +52,7 @@ const questions = [{
     message: 'Please enter license for the project.',
     name: 'license',
     choices: ['Apache_2.0', 'Boost_Software_License_1.0', 'BSD_3-Clause_License', 'BSD_2-Clause_License'],
-    validate: (value) => { if (value) { return true } else { return 'Please enter a valid response.' } },
+    validate: validateInfo,
 },
 {
     type: 'input',

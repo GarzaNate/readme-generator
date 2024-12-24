@@ -1,11 +1,9 @@
-// function to render license badge
-function renderLicenseBadge(license) {
-  return `![${license}](${renderLicenseLink(license)})`
-}
+// Description: This file contains the function to generate the readme template
 
-// function to render license link
-function renderLicenseLink(license) {
-  return `https://img.shields.io/badge/LICENSE-${license}-blueviolet`
+// function to render the license badge
+function renderLicenseBadge(license) {
+  return `
+![License](https://img.shields.io/badge/License-${license}-blue.svg)`
 }
 
 // function to render the license section on readme file
@@ -19,15 +17,18 @@ ${renderLicenseBadge(license)}`
 function generateMarkdown(data) {
   return `
 # ${data.title}
+${renderLicenseBadge(data.license)}
 
 ## Description
 ${data.description}
 
 ## Table of Contents
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [Tests](#tests)
+- [License](#license)
+- [Questions](#questions)
 
 ## Installation
 ${data.installation}
@@ -35,18 +36,19 @@ ${data.installation}
 ## Usage
 ${data.usage}
 
-## Tests
-${data.test}
-
 ## Credits
 ${data.credit}
 
+## Tests
+${data.test}
+
 ${renderLicenseSection(data.license)}
 
-## Contact
-* Email: ${data.email}
-* Github: ${data.username}
-`;
+## Questions
+For any questions, please contact me at:
+- Github: [${data.username}](
+- Email: ${data.email}
+`
 }
 // exporting generateMarkdown function
 module.exports = generateMarkdown;
